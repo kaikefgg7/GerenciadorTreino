@@ -43,7 +43,6 @@ class DetalheTreinoActivity : AppCompatActivity() {
 
     private fun carregarDetalhesTreino() {
         val db = dbHelper.readableDatabase
-        // Busca o treino pelo ID recebido via Intent
         val cursorTreino: Cursor = db.rawQuery(
             "SELECT * FROM ${DatabaseHelper.TABLE_TREINO} WHERE ${DatabaseHelper.COL_ID} = ?",
             arrayOf(treinoId.toString())
@@ -54,7 +53,6 @@ class DetalheTreinoActivity : AppCompatActivity() {
         }
         cursorTreino.close()
 
-        // Busca os exercícios vinculados ao treino e adiciona na tela
         val cursorEx: Cursor = db.rawQuery(
             "SELECT * FROM ${DatabaseHelper.TABLE_EXERCICIO} WHERE ${DatabaseHelper.COL_TREINO_ID} = ?",
             arrayOf(treinoId.toString())
@@ -76,9 +74,7 @@ class DetalheTreinoActivity : AppCompatActivity() {
 
     private fun excluirTreino() {
         val db = dbHelper.writableDatabase
-        // Exclui os exercícios vinculados
         db.delete(DatabaseHelper.TABLE_EXERCICIO, "${DatabaseHelper.COL_TREINO_ID} = ?", arrayOf(treinoId.toString()))
-        // Exclui o treino em si
         db.delete(DatabaseHelper.TABLE_TREINO, "${DatabaseHelper.COL_ID} = ?", arrayOf(treinoId.toString()))
         Toast.makeText(this, "Treino excluído!", Toast.LENGTH_SHORT).show()
         finish()
