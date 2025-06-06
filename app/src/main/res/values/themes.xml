@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Gerenciadortreino" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/treino2</item>
+        <item name="windowSplashScreenAnimationDuration">1300</item>
+        <item name="postSplashScreenTheme">@style/Theme.Gerenciadortreino</item>
+    </style>
+</resources>
+
